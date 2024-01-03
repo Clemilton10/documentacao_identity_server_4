@@ -28,6 +28,7 @@ public class Config
 	public static IEnumerable<Client> Clients =>
 		new Client[]
 		{
+				// 001_protegendo_api
 				new Client
 				{
 					ClientId = "client",
@@ -45,6 +46,7 @@ public class Config
 					AllowedScopes = { "myApi.read" }
 				},
 
+				// 002_user_password
 				// Cliente de concessao de senha do proprietario do recurso
 				new Client
 				{
@@ -58,6 +60,7 @@ public class Config
 					AllowedScopes = { "myApi.read" }
 				},
 
+				// 003_webclient
 				// Cliente de fluxo hibrido OpenID Connect (MVC)
 				new Client
 				{
@@ -70,22 +73,21 @@ public class Config
 						new Secret("secret".Sha256())
 					},
 
-					RedirectUris           = { "https://localhost:7088/signin-oidc" },
-					PostLogoutRedirectUris = { "https://localhost:7088/signout-callback-oidc" },
+					RedirectUris           = { "https://localhost:5011/signin-oidc" },
+					PostLogoutRedirectUris = { "https://localhost:5011/signout-callback-oidc" },
 
 					AllowedScopes =
 					{
 						IdentityServerConstants.StandardScopes.OpenId,
 						IdentityServerConstants.StandardScopes.Profile,
-						"myApi.read"
 					},
 
 					AllowOfflineAccess = true,
-					RequirePkce = true,
+					RequirePkce = false,
 				}
 		};
 
-	// 002_user_password
+	// 002_user_password & 003_webclient
 	public static List<TestUser> Users =>
 		new List<TestUser>
 		{
