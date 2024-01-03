@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "is4", "001_protegendo_api\is4\is4.csproj", "{790C5709-F9DA-4975-84D7-621AE02843D9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "001_protegendo_api", "001_protegendo_api", "{79724306-FA6B-4060-BD29-DABF450AE5B2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "extras", "extras", "{BDCB69D9-D89C-4732-9FA8-83F482E5C219}"
+	ProjectSection(SolutionItems) = preProject
+		.prettierrc.json = .prettierrc.json
+		IdentityServer4.Quickstart.UI-main.zip = IdentityServer4.Quickstart.UI-main.zip
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "api", "001_protegendo_api\api\api.csproj", "{276EF8F3-F014-48F1-B8B2-BA12C4C0EF47}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "extras", "extras", "{6D464ED0-146B-4CEE-83B2-2CBAB542C933}"
+	ProjectSection(SolutionItems) = preProject
+		001_protegendo_api\.prettierrc.json = 001_protegendo_api\.prettierrc.json
+		001_protegendo_api\README.md = 001_protegendo_api\README.md
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Client", "001_protegendo_api\Client\Client.csproj", "{5737088F-0BC4-4098-B3F4-2CDE02383A50}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{790C5709-F9DA-4975-84D7-621AE02843D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{790C5709-F9DA-4975-84D7-621AE02843D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{790C5709-F9DA-4975-84D7-621AE02843D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{790C5709-F9DA-4975-84D7-621AE02843D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{276EF8F3-F014-48F1-B8B2-BA12C4C0EF47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{276EF8F3-F014-48F1-B8B2-BA12C4C0EF47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{276EF8F3-F014-48F1-B8B2-BA12C4C0EF47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{276EF8F3-F014-48F1-B8B2-BA12C4C0EF47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5737088F-0BC4-4098-B3F4-2CDE02383A50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5737088F-0BC4-4098-B3F4-2CDE02383A50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5737088F-0BC4-4098-B3F4-2CDE02383A50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5737088F-0BC4-4098-B3F4-2CDE02383A50}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{790C5709-F9DA-4975-84D7-621AE02843D9} = {79724306-FA6B-4060-BD29-DABF450AE5B2}
+		{276EF8F3-F014-48F1-B8B2-BA12C4C0EF47} = {79724306-FA6B-4060-BD29-DABF450AE5B2}
+		{6D464ED0-146B-4CEE-83B2-2CBAB542C933} = {79724306-FA6B-4060-BD29-DABF450AE5B2}
+		{5737088F-0BC4-4098-B3F4-2CDE02383A50} = {79724306-FA6B-4060-BD29-DABF450AE5B2}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1D689E3F-A193-4A9C-B793-A336C47A9F86}
+	EndGlobalSection
+EndGlobal
