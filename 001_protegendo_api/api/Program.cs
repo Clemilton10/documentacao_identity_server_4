@@ -18,6 +18,7 @@ builder.Services
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
+// Authorization do Swagger
 //builder.Services.AddSwaggerGen();
 builder.Services.AddSwaggerGen(option =>
 {
