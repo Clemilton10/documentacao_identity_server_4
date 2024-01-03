@@ -7,7 +7,7 @@ dotnet new sln -n is4_permissoes
 touch .prettierrc.json
 ```
 
-📝 .prettierrc.json
+📝 documentacao_identity_server_4/.prettierrc.json
 
 ```json
 {
@@ -19,4 +19,6 @@ touch .prettierrc.json
 }
 ```
 
-[001 protegendo a api](./001_protegendo_api/README.md)
+[001 Protegendo a API](./001_protegendo_api/README.md)
+
+[002 Usuário & Senha](./002_user_password/README.md)

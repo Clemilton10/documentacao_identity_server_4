@@ -19,7 +19,6 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
 // Authorization do Swagger
-//builder.Services.AddSwaggerGen();
 builder.Services.AddSwaggerGen(option =>
 {
 	option.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });

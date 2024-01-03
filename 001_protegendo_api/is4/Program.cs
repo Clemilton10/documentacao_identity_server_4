@@ -12,11 +12,20 @@ builder.Services
 			options.EmitStaticAudienceClaim = true;
 		}
 	)
+
+	// certificado de assinatura temporário usado para assinar tokens
+	// Desenvolvimento
+	.AddDeveloperSigningCredential()
+	// Produção
+	//.AddSigningCredential()
+
 	.AddInMemoryIdentityResources(Config.IdentityResources)
 	.AddInMemoryApiResources(Config.ApiResources)
 	.AddInMemoryApiScopes(Config.ApiScopes)
 	.AddInMemoryClients(Config.Clients)
-	.AddDeveloperSigningCredential();
+
+	// 002_user_password
+	.AddTestUsers(Config.Users);
 
 // ativa os controladores com visualizadores(views)
 builder.Services.AddControllersWithViews();

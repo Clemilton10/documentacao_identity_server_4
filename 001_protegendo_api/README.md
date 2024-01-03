@@ -14,7 +14,7 @@ touch .prettierrc.json
 
 ### Configurando o servidor e as portas
 
-📝 is4/Properties/launchSettings.json
+📝 documentacao_identity_server_4/001_protegendo_api/is4/Properties/launchSettings.json
 
 ```json
 {
@@ -34,7 +34,7 @@ touch .prettierrc.json
 
 ### Instando os pacotes
 
-📝 is4/is4.csproj
+📝 documentacao_identity_server_4/001_protegendo_api/is4/is4.csproj
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -55,7 +55,7 @@ cd is4
 touch Config.cs
 ```
 
-📝 is4/Config.cs
+📝 documentacao_identity_server_4/001_protegendo_api/is4/Config.cs
 
 ```csharp
 using IdentityServer4;
@@ -148,7 +148,7 @@ public class Config
 
 ### Configurando o Program.cs
 
-📝 is4/Program.cs
+📝 documentacao_identity_server_4/001_protegendo_api/is4/Program.cs
 
 ```csharp
 
@@ -164,11 +164,17 @@ builder.Services
 			options.EmitStaticAudienceClaim = true;
 		}
 	)
+
+	// certificado de assinatura temporário usado para assinar tokens
+	// Desenvolvimento
+	.AddDeveloperSigningCredential()
+	// Produção
+	//.AddSigningCredential()
+
 	.AddInMemoryIdentityResources(Config.IdentityResources)
 	.AddInMemoryApiResources(Config.ApiResources)
 	.AddInMemoryApiScopes(Config.ApiScopes)
-	.AddInMemoryClients(Config.Clients)
-	.AddDeveloperSigningCredential();
+	.AddInMemoryClients(Config.Clients);
 
 // ativa os controladores com visualizadores(views)
 builder.Services.AddControllersWithViews();
@@ -230,7 +236,7 @@ dotnet sln add api
 
 ### Configurando o servidor e as portas
 
-📝 api/Properties/launchSettings.json
+📝 documentacao_identity_server_4/001_protegendo_api/api/Properties/launchSettings.json
 
 ```json
 {
@@ -252,7 +258,7 @@ dotnet sln add api
 
 ### Instalando os pacotes
 
-📝 api/api.csproj
+📝 documentacao_identity_server_4/001_protegendo_api/api/api.csproj
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -275,7 +281,7 @@ cd api
 touch Controllers/IdentityController.cs
 ```
 
-📝 api/Controllers/IdentityController.cs
+📝 documentacao_identity_server_4/001_protegendo_api/api/Controllers/IdentityController.cs
 
 ```csharp
 using Microsoft.AspNetCore.Authorization;
@@ -297,7 +303,7 @@ public class Identity : ControllerBase
 
 ### Configurando o Program.cs
 
-📝 api/Program.cs
+📝 documentacao_identity_server_4/001_protegendo_api/api/Program.cs
 
 ```csharp
 builder.Services
@@ -321,7 +327,7 @@ app.UseAuthorization();
 
 ### Adicionando o Authorization no Swagger
 
-📝 api/Program.cs
+📝 documentacao_identity_server_4/001_protegendo_api/api/Program.cs
 
 ```csharp
 //builder.Services.AddSwaggerGen();
@@ -354,7 +360,72 @@ builder.Services.AddSwaggerGen(option =>
 });
 ```
 
-# Client - Console
+# Client 02 - Console
+
+### Criando o Console
+
+```sh
+dotnet new console -f net6.0 -n Client2
+dotnet sln add Client2
+```
+
+### Instalando os pacotes
+
+📝 documentacao_identity_server_4/001_protegendo_api/Client2/Client2.csproj
+
+```xml
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="IdentityModel" Version="3.3.1" />
+	</ItemGroup>
+</Project>
+```
+
+### Configurando o Program.cs
+
+📝 documentacao_identity_server_4/001_protegendo_api/Client2/Program.cs
+
+```csharp
+using IdentityModel.Client;
+using Newtonsoft.Json.Linq;
+
+var disco = await DiscoveryClient.GetAsync("https://localhost:5001");
+
+// request token
+var tokenClient = new TokenClient(disco.TokenEndpoint, "client", "secret");
+var tokenResponse = await tokenClient.RequestClientCredentialsAsync("myApi.read");
+
+if (tokenResponse.IsError)
+{
+	Console.WriteLine(tokenResponse.Error);
+	return;
+}
+
+Console.WriteLine(tokenResponse.Json);
+
+// call api
+var client = new HttpClient();
+client.SetBearerToken(tokenResponse.AccessToken);
+
+var response = await client.GetAsync("https://localhost:5006/identity");
+if (!response.IsSuccessStatusCode)
+{
+	Console.WriteLine(response.StatusCode);
+}
+else
+{
+	var content = await response.Content.ReadAsStringAsync();
+	Console.WriteLine(JArray.Parse(content));
+}
+```
+
+# Client 01 - Console
 
 ### Criando o Console
 
@@ -365,7 +436,7 @@ dotnet sln add Client
 
 ### Instalando os pacotes
 
-📝 Client/Client.csproj
+📝 documentacao_identity_server_4/001_protegendo_api/Client/Client.csproj
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -388,7 +459,7 @@ cd Client
 touch IAccessToken.cs
 ```
 
-📝 Client/IAccessToken.cs
+📝 documentacao_identity_server_4/001_protegendo_api/Client/IAccessToken.cs
 
 ```csharp
 namespace Client.AccessToken
@@ -405,7 +476,7 @@ namespace Client.AccessToken
 
 ### Configurando o Program.cs
 
-📝 Client/Program.cs
+📝 documentacao_identity_server_4/001_protegendo_api/Client/Program.cs
 
 ```csharp
 using Client.AccessToken;
@@ -458,7 +529,7 @@ class Program
 							{
 								Console.WriteLine();
 								Console.WriteLine();
-								Console.WriteLine(rs);
+								Console.WriteLine(JArray.Parse(rs));
 							}
 						}
 						else

@@ -1,5 +1,6 @@
 ﻿using IdentityServer4;
 using IdentityServer4.Models;
+using IdentityServer4.Test;
 
 public class Config
 {
@@ -31,21 +32,21 @@ public class Config
 				{
 					ClientId = "client",
 
-                    // Sem usuario interativo, use o cliente/secreto para autenticacao
-                    AllowedGrantTypes = GrantTypes.ClientCredentials,
+					// Sem usuario interativo, use o cliente/secreto para autenticacao
+					AllowedGrantTypes = GrantTypes.ClientCredentials,
 
-                    // segredo para autenticacao
-                    ClientSecrets =
+					// segredo para autenticacao
+					ClientSecrets =
 					{
 						new Secret("secret".Sha256())
 					},
 
-                    // escopos a que o cliente tem acesso a
+					// escopos a que o cliente tem acesso a
 					AllowedScopes = { "myApi.read" }
 				},
 
-                // Cliente de concessao de senha do proprietario do recurso
-                new Client
+				// Cliente de concessao de senha do proprietario do recurso
+				new Client
 				{
 					ClientId = "ro.client",
 					AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
@@ -57,8 +58,8 @@ public class Config
 					AllowedScopes = { "myApi.read" }
 				},
 
-                // Cliente de fluxo hibrido OpenID Connect (MVC)
-                new Client
+				// Cliente de fluxo hibrido OpenID Connect (MVC)
+				new Client
 				{
 					ClientId = "mvc",
 					ClientName = "MVC Client",
@@ -82,5 +83,23 @@ public class Config
 					AllowOfflineAccess = true,
 					RequirePkce = true,
 				}
+		};
+
+	// 002_user_password
+	public static List<TestUser> Users =>
+		new List<TestUser>
+		{
+			new TestUser
+			{
+				SubjectId = "1",
+				Username = "alice",
+				Password = "Senha123!"
+			},
+			new TestUser
+			{
+				SubjectId = "2",
+				Username = "bob",
+				Password = "Senha123!"
+			}
 		};
 }

@@ -1,5 +1,6 @@
 ﻿using Client.AccessToken;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System.Net.Http.Headers;
 
 class Program
@@ -48,7 +49,7 @@ class Program
 							{
 								Console.WriteLine();
 								Console.WriteLine();
-								Console.WriteLine(rs);
+								Console.WriteLine(JArray.Parse(rs));
 							}
 						}
 						else
