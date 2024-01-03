@@ -10,7 +10,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "extras", "extras", "{BDCB69D9-D89C-4732-9FA8-83F482E5C219}"
 	ProjectSection(SolutionItems) = preProject
 		.prettierrc.json = .prettierrc.json
+		IdentityServer.Templates.md = IdentityServer.Templates.md
 		IdentityServer4.Quickstart.UI-main.zip = IdentityServer4.Quickstart.UI-main.zip
+		IdentityServer4.Templates.md = IdentityServer4.Templates.md
 		README.md = README.md
 	EndProjectSection
 EndProject
@@ -46,6 +48,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "extras", "extras", "{CDC048
 		003_webclient\README.md = 003_webclient\README.md
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "004_identityserver6", "004_identityserver6", "{7C9FF954-B568-4C68-9177-7BEE3BD76EC7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "isaspid", "004_identityserver6\isaspid\isaspid.csproj", "{6766B3B0-AED1-4B45-844E-059829BD1536}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "extras", "extras", "{E66627D1-D6CF-4E57-B500-A7E257FD8B40}"
+	ProjectSection(SolutionItems) = preProject
+		004_identityserver6\.prettierrc.json = 004_identityserver6\.prettierrc.json
+		004_identityserver6\README.md = 004_identityserver6\README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -76,6 +88,10 @@ Global
 		{4BB2B602-9ACA-4D5C-BBD0-583A56BF3A1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BB2B602-9ACA-4D5C-BBD0-583A56BF3A1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4BB2B602-9ACA-4D5C-BBD0-583A56BF3A1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6766B3B0-AED1-4B45-844E-059829BD1536}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6766B3B0-AED1-4B45-844E-059829BD1536}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6766B3B0-AED1-4B45-844E-059829BD1536}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6766B3B0-AED1-4B45-844E-059829BD1536}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -90,6 +106,8 @@ Global
 		{E68E572E-8A00-4051-865A-65560CF7AE7D} = {79724306-FA6B-4060-BD29-DABF450AE5B2}
 		{4BB2B602-9ACA-4D5C-BBD0-583A56BF3A1C} = {614A5142-25FB-456E-B834-F3EEDFCD3AD8}
 		{CDC048F5-2644-4E2C-B6C8-64EFCA136528} = {614A5142-25FB-456E-B834-F3EEDFCD3AD8}
+		{6766B3B0-AED1-4B45-844E-059829BD1536} = {7C9FF954-B568-4C68-9177-7BEE3BD76EC7}
+		{E66627D1-D6CF-4E57-B500-A7E257FD8B40} = {7C9FF954-B568-4C68-9177-7BEE3BD76EC7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1D689E3F-A193-4A9C-B793-A336C47A9F86}
